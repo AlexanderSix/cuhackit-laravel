@@ -129,7 +129,7 @@ Once we have the vagrant box up and running (using `vagrant up`), we can shell i
 cd /home/vagrant/code/cuhackit-laravel
 ```
 
-2. Even though this should have been done on the clone, it's generally good practice to load all of the back-end dependencies when you begin development on a new machine. To load PHP dependencies, we use `Composer` (https://getcomposer.org). This is much the same as `npm` for JavaScript in that it is a repository for all sorts of PHP packages. Run the following commands inside the cuhackit-laravel directory to install back-end dependencies:
+2. Even though this should have been done on the clone, it's generally good practice to load all of the back-end dependencies when you begin development on a new machine. To load PHP dependencies, we use Composer (https://getcomposer.org). This is much the same as NPM for JavaScript in that it is a repository for all sorts of PHP packages. Run the following commands inside the cuhackit-laravel directory to install back-end dependencies:
 ```
 composer install
 
