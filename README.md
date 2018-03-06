@@ -13,9 +13,13 @@ Laravel Homestead is a Vagrant box (essentially a VM) that will run and host all
 1. In your command line application of choice, retrieve the `laravel/homestead` box from the Vagrant box repository by running 
 ```
 vagrant box add laravel/homestead
+
+/* When presented with options of which VM provider
+to choose, make sure to select Virtualbox, since that
+is the VM provider that we just installed */
 ```
 
-* If this fails, make sure your Vagrant install is up-to-date.
+* If this fails, make sure both your Vagrant install AND your VirtualBox install are up-to-date.
 
 2. Install Laravel Homestead by cloning the repository. Feel free to change the destination directory, but note that we will be using the following for the rest of the install process: 
 ```
