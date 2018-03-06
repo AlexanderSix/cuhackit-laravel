@@ -3,7 +3,7 @@
 ### Prerequisites:
 1. Install VirtualBox (https://www.virtualbox.org)
 
-2. Install Vagrant (https://www.vagrantup.com/downloads.html) for your particular operating system
+2. Install Vagrant (https://www.vagrantup.com/downloads.html) for your particular host operating system
 
 3. Run `vagrant` on your command line to check if the installation was successful (you should see a list of Vagrant commands if the install was a success!)
 
