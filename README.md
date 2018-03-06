@@ -81,6 +81,10 @@ sites:
 5. If you navigate to cuhackit.localhost, you should see...nothing. That's because we haven't told our machine how to handle this URL yet! Long story short, your machine has a hosts file that gives it some instruction on how to handle special URLs that are requested by the browser. Here's what you have to do to fix this:
 
 ```
+/* If you are not a superuser on your machine, you will
+need to open the file as sudo in order to write to the
+etc/hosts file */
+
 /* Mac/Linux file location: */
 /etc/hosts
 
