@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get("/goals", "GoalController@index");
+Route::post("/goals", "GoalController@store");
