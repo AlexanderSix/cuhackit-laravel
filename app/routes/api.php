@@ -17,5 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("/goals", "GoalController@index");
-Route::post("/goals", "GoalController@store");
+Route::group(['middleware' => 'QuickAuth'], function () {
+    Route::get("/goals", "GoalController@index");
+    Route::post("/goals", "GoalController@store");
+    Route::post("/goals/mark-complete", "GoalController@markAsComplete");
+});
