@@ -173,3 +173,5 @@ sudo chmod -R ug+rwx storage bootstrap/cache
 ```
 
 4. You're probably ready by now to get up and running with this framework! Try it out! Open up your web browser of choice and navigate to http://cuhackit.localhost!
+
+**NOTE:** If this won't work, try navigating to `localhost:8000` in your browser--if the Laravel page doesn't appear, you most likely have an error in your `Homestead.yaml` file.
