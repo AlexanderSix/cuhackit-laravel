@@ -52,7 +52,7 @@ Once the init script has finished initializing Homestead on your machine, we nee
 provider: virtualbox
 ```
 
-2. Next, we need to create the directory where Homestead is going to look for our code. To make things quicker, I have created a starting repository for you. Either clone it down using git, or download the repository to your local machine here: https://github.com/AlexanderSix/cuhackit-laravel
+2. Next, we need to create the directory where Homestead is going to look for our code. To make things quicker, I have created a starting repository for you. Either clone it down using git, or download the repository to your local machine here: https://github.com/AlexanderSix/cuhackit-laravel. (Make sure to clone this repository into a directory that is **NOT** `~/Homestead`)
 
 ```
 // Using an SSH key
@@ -65,14 +65,22 @@ git clone https://github.com/AlexanderSix/cuhackit-laravel.git
 3. Next, we need to configure the shared folders. This will allow us to write code on our own personal machines, but *RUN* the code on the Homestead VM. That way, we are all running our code on the same "machine", which makes debugging a lot simpler, and prevents the "it works on my machine" problem. Make the following adjustments in your `Homestead.yaml` file:
 
 ```
+/* MAKE SURE THE ALIGNMENT IN YOUR YAML FILES LOOKS EXACTLY 
+LIKE THE SPACING BELOW */
+
 folders:
 	- map: ~/directory/from/step/2/cuhackit-laravel/app
 	  to: /home/vagrant/code/cuhackit-laravel
 ```
 
+**NOTE:** REMEMBER TO CHANGE `directory/from/step/2` to the directory where you cloned the cuahckit-laravel repository
+
 4. Now that we've told Homestead where to find our files, we need to tell it how to serve our files to our web browser so we can actually see our progress. Luckily for us, Homestead comes bundled with Nginx (https://www.nginx.com), so we only have to make a few changes to our `Homestead.yaml` to see our web app live in our browser:
 
 ```
+/* MAKE SURE THE ALIGNMENT IN YOUR YAML FILES LOOKS EXACTLY 
+LIKE THE SPACING BELOW */
+
 sites:
 	- map: cuhackit.localhost
 	  to: /home/vagrant/code/cuhackit-laravel/public
@@ -108,6 +116,8 @@ To bring Homstead online:
 ```
 vagrant up 
 ```
+**NOTE:** If you get the error message "Check your Homestead.yaml file, the path to your private key does not exist", check and see if you have a pair of id_rsa keys in your `~/.ssh` directory. If not, then run `ssh-keygen` hit return until the process is finished.
+
 
 To tear down the Homestead VM:
 ```
@@ -147,6 +157,19 @@ composer dumpautoload
 3. Once we've finished with the back-end dependencies, we also need to load all of the front-end dependencies. This can be done with NPM (https://www.npmjs.com), but another package manager, Yarn (https://yarnpkg.com/en/) is what we are going to be using because it is faster and, by default, guarantees that the versions will be the same across systems via lockfiles (check the docs for more information on either of these). Fun the following command inside the cuhackit-laravel directory to install front-end dependencies:
 ```
 yarn
+
+/* If the above command fails, run the following: */
+yarn install --force
+
+```
+
+4. In order to set up the application, run the following commands:
+```
+cp .env.example .env
+
+php artisan key:generate
+
+sudo chmod -R ug+rwx storage bootstrap/cache
 ```
 
 4. You're probably ready by now to get up and running with this framework! Try it out! Open up your web browser of choice and navigate to http://cuhackit.localhost!
