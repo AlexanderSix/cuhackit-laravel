@@ -55,9 +55,10 @@ export function post(url, payload, token = null) {
  * @param  {String} url          The API endpoint
  * @param  {String} [token=null] The local bearer token (defaults to null)
  */
-export function del(url, token = null) {
+export function del(url, data = null, token = null) {
   return axios({
     method: 'DELETE',
+    data,
     url,
     headers: {
       'Accept': 'application/json',
