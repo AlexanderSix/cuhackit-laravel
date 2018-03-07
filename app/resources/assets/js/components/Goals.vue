@@ -41,6 +41,10 @@
 	import { post } from '../helpers/api.js';
 
 	export default {
+		props: [
+			'user'
+		],
+
 		mounted() {
 			// Get the goals from the server
 			this.getGoals();
@@ -56,7 +60,7 @@
 		methods: {
 			clearGoal(goal) {
 				console.log("Clearing goal!");
-				del('api/goals', goal)
+				post('api/goals/mark-complete', goal, this.user)
 					.then( (res) => {
 						this.uncompletedGoals = this.removeGoal(goal);
 					})
@@ -67,8 +71,9 @@
 
 			getGoals() {
 				console.log("Getting goals!");
-				get('api/goals')
+				get('api/goals', this.user)
 					.then( (res) => {
+						console.log(res.data);
 						this.uncompletedGoals = res.data;
 					})
 					.catch( (err) => {
@@ -78,9 +83,10 @@
 
 			createGoal() {
 				console.log("Creating goal!");
-				post('api/goals', newGoal)
+				post('api/goals', this.newGoal, this.user)
 					.then( (res) => {
-
+						this.newGoal = {};
+						this.getGoals();
 					})
 					.catch( (err) => {
 
@@ -88,7 +94,7 @@
 			},
 
 			removeGoal(goal) {
-				return uncompletedGoals.filter(e => e !== goal);
+				return this.uncompletedGoals.filter(e => e !== goal);
 			}
 
 		}

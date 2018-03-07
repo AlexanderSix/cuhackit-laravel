@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <goal-tracker></goal-tracker>
+            <goal-tracker user="{{ Auth::user()->id }}"></goal-tracker>
         </div>
     </div>
 </div>
