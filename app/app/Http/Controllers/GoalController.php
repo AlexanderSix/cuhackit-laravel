@@ -38,7 +38,15 @@ class GoalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $goal = new Goal;
+        $goal->user_id = Auth::user()->id;
+        $goal->text = $request->text;
+        $goal->is_finished = false;
+        if ($goal->save()) {
+            return response()->json(200);
+        }
+
+        return response()->json(['error' => 'Goal could not be stored in the database.'], 500);
     }
 
     /**
