@@ -14,8 +14,10 @@ class GoalController extends Controller
      */
     public function index()
     {
-        return Goal::where('is_finished', true)
+        $goals = Goal::where('is_finished', true)
             ->get();
+
+        return response()->json($goals);
     }
 
     /**
